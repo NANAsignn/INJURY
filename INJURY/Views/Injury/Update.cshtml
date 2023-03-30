@@ -1,0 +1,54 @@
+﻿@model InjuryViewModel
+@using INJURY.DataAccess.Models
+
+@{
+    string pageType = Model.CurrentInjury.InjuryID > 0 ? "Update Injury" : "Create Injury";
+
+    ViewData["Title"] = $"INJURY | {pageType}";
+}
+
+<form action="~/INJURY/Index" method="post">
+    <div>
+        <div class="row">
+            <div class="col-6 offset-3 text-center">
+                <h1 class="display-4" style="margin: 20px 0px;">@pageType</h1>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-md-3 offset-md-3 form-group">
+                <label>Last Name: </label>
+                <input type="text" class="form-control" name="lastName" value="@Model.CurrentInjury.LastName" />
+            </div>
+            <div class="col-md-3 form-group">
+                <label>First Name: </label>
+                <input type="text" class="form-control" name="firstName" value="@Model.CurrentInjury.FirstName" />
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-md-6 offset-md-3 form-group">
+                <label>Address: </label>
+                <input type="text" class="form-control" name="address" value="@Model.CurrentInjury.Address" />
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-md-6 offset-md-3 form-group">
+                <label>City: </label>
+                <input type="text" class="form-control" name="city" value="@Model.CurrentInjury.City" />
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-md-6 offset-md-3 form-group">
+                <label>Injury: </label>
+                <input type="text" class="form-control" name="Injury" value="@Model.CurrentInjury.Injury" />
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-md-6 offset-md-3">
+                <button type="button" class="btn btn-secondary" onclick="location.href = '/Injury/Index'">CANCEL</button>
+                <button type="submit" class="btn btn-primary">SAVE Injury</button>
+            </div>
+        </div>
+    </div>
+    <input type="hidden" name="injuryID" value="@Model.CurrentInjury.InjuryID" />
+</form>
+
